@@ -1,0 +1,73 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Storage Tutorial Firebase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style media="screen">
+        body{
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: silver;
+
+
+        }
+        #uploader{
+            width: 50%;
+            margin-bottom: 10px;
+
+        }
+    
+    </style>
+</head>
+<body>
+
+    <progress value="0" max="100" id="uploader"> 0% </progress>
+    <input type="file" id="filebutton">
+
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDDsO9C3XuEub4lp5Ul7D_r2GUqPyNhbQ0",
+    authDomain: "storagewebtutorial-40d6d.firebaseapp.com",
+    databaseURL: "https://storagewebtutorial-40d6d.firebaseio.com",
+    projectId: "storagewebtutorial-40d6d",
+    storageBucket: "storagewebtutorial-40d6d.appspot.com",
+    messagingSenderId: "763562893504"
+  };
+    
+  firebase.initializeApp(config);
+
+
+  var uploader=document.getElementById("uploader");
+    var filebutton=document.getElementById("filebutton");
+    filebutton.addEventListener('change',function(e){
+ //get file
+ var file=e.target.files[0];
+ //get storage ref 
+ var storageRef=firebase.storage().ref("Picture/"+file.name);
+ var task=storageRef.put(file);
+ task.on('stage_changed',function progress(snapshot){
+     var percentage=(snapshot.bytesTransferred/snapsho.totalBytes)*100;
+     uploader.value=percentage;
+ }, function error(err){
+     console.log(err,message);
+ }, function complete(){
+     console.log("Upload Complete");
+ });
+
+    }) ;
+</script>
+    
+</body>
+</html>
