@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "app",    //Folder ที่จะ Upload
+    "ignore": [         //File ที่ไม่ต้องการ Upload
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
