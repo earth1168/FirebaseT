@@ -1,0 +1,11 @@
+{
+  "User1" : "Pimanus",
+  "User2" : "Firebase",
+  "User3" : "RTB",
+  "User4" : {
+    "Name" : "Pimanus",
+    "e-mail" : "pimanus@gmail.com",
+    "sex" : "men",
+    "tel" : "084"
+  }
+}
